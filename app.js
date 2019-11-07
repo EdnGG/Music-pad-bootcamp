@@ -14,10 +14,15 @@ let dict = {
 
 let pads = document.querySelectorAll(".key-pad");
 console.log(pads);
+//Este for agrega la clase .pulso a cada elemento
 for (let pad of pads) {
   pad.classList.add("pulso");
+  //Aqui agrega la el evento "click" a cada elemento
   pad.addEventListener("click", onPress);
 }
+
+//En este punto del programa, primero se agrego la clase .pulso a cad elemento
+//de la
 
 function onPress(e) {
   e.target.classList.remove("pulso");
@@ -55,8 +60,19 @@ function onPressNode(node) {
 // Primero asegurate de ver todas las clases de esta semana
 // Después lee la documentación para el evento "keypress"
 // Intenta crear el event listener en document para el evento keypress
+addEventListener("keypress", soundFromKeyboard);
 // Crea una función para que sirva de callback al observado anterior
+function soundFromKeyboard(e) {
+  // obtengo codigo de tecla
+  let node = e.keyCode;
+  //concateno el evento con el ID del elemento
+  let newNode = document.getElementById(`pad-${node}`);
+  console.log(`Valor de e.target ${newNode}`);
+  // Paso por parametro el nodo a la function indicada
+  onPressNode(newNode);
+}
 // Por último dentro de esta nueva función invoca a la función onPressNode
+
 // Recuerda que onPressNode necesita un nodo para funcionar, ahí radica el reto, con el dato keyCode debes seleccionar el nodo correcto del DOM para entregárselo a onPressNode.
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
